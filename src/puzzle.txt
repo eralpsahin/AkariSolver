@@ -1,0 +1,7 @@
+E E E E E E B
+E E 4 E E E E
+0 E E E 1 B E
+E E E 1 E E E
+E B 1 E E E B
+E E E E B E E
+1 E E E E E E
