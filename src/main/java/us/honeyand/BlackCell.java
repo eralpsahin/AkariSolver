@@ -7,11 +7,16 @@ public class BlackCell {
     int value;
     int row;
     int column;
-
-    public BlackCell(int number, int row, int column) {
-        this.value = number;
+    int neighbor;
+    public BlackCell(int value, int row, int column) {
+        this.value = value;
         this.row = row;
         this.column = column;
+        neighbor = 0;
+    }
+
+    public int getNeighbor() {
+        return neighbor;
     }
 
     public int getValue() {
