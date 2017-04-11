@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        AkariBoard akari = new AkariBoard("puzzle2.txt", 8, 8);
+        AkariBoard akari = new AkariBoard("puzzle2.txt", 12, 12);
         akari.printMatrix();
         Model model = new Model("Akari (Light Up)");
         BoolVar[] vars = new BoolVar[akari.getVarCount()];
@@ -24,8 +24,7 @@ public class Main {
         for (int i = 0; i < akari.getBoard().length; i++) {
             for (int j = 0; j < akari.getBoard()[0].length; j++) {
                 if (akari.getBoard()[i][j] == 'E') {
-                    vars[index] = model.boolVar("Tile_" + i + j);
-                    //vars1[index] = model.intVar("Tile_"+i+j,new int[]{0, 1});
+                    vars[index] = model.boolVar("Tile_" + i + "_"+ j);
                     index++;
                 }
                 if (akari.getBoard()[i][j] == 'B' || akari.getBoard()[i][j] == '0' || akari.getBoard()[i][j] == '1' || akari.getBoard()[i][j] == '2' || akari.getBoard()[i][j] == '3' || akari.getBoard()[i][j] == '4') {
@@ -35,17 +34,21 @@ public class Main {
             }
         }
 
-
+        System.out.println(akari.getVarCount());
         for (BlackCell cell : akari.getBlackCellList()) {
             System.out.println("\n" + cell);
 
             if (cell.value == 11)
                 continue;
-            List<String> neighbor = akari.getNeighborFromBlackCell(cell);
+            List<String> neighbors = akari.getNeighborFromBlackCell(cell);
 
+            for (String neigh: neighbors
+                 ) {
+                System.out.println(neigh);
+            }
             BoolVar[] newArray = Arrays.copyOfRange(vars, 0, cell.getNeighbor());
             int n = 0;
-            for (String str : neighbor) {
+            for (String str : neighbors) {
 
                 for (int i = 0; i < vars.length; i++) {
                     if (vars[i].getName().equals("Tile_" + str)) {
@@ -57,6 +60,7 @@ public class Main {
             }
             model.sum(newArray, "=", cell.value).post();
         }
+
         for (int i = 0; i < index; i++) {
             List<String> sight = akari.getSightFromTile(vars[i].getName());
 

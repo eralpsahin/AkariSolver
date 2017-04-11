@@ -114,22 +114,22 @@ public class AkariBoard {
 
         if(cell.row != 0) { //Cant have empty cell on 1 up
             if(!isBlackCell(cell.row-1,cell.column)) {
-                result.add((cell.row-1)+""+cell.column);
+                result.add((cell.row-1)+"_"+cell.column);
             }
         }
         if(cell.column != 0) { //Cant have empty cell on 1 left
             if(!isBlackCell(cell.row,cell.column-1)) {
-                result.add(cell.row+""+(cell.column-1));
+                result.add(cell.row+"_"+(cell.column-1));
             }
         }
         if(cell.row != this.row-1) { //Cant have empty cell on 1 bottom
             if(!isBlackCell(cell.row+1,cell.column)) {
-                result.add((cell.row+1)+""+cell.column);
+                result.add((cell.row+1)+"_"+cell.column);
             }
         }
         if(cell.column != this.column-1) { //Cant have emtpy cell on 1 right
             if(!isBlackCell(cell.row,cell.column+1)) {
-                result.add(cell.row+""+(cell.column+1));
+                result.add(cell.row+"_"+(cell.column+1));
             }
         }
         cell.neighbor = result.size();
@@ -149,8 +149,10 @@ public class AkariBoard {
         List<String> sightRow = new ArrayList<String>();
 
         System.out.println("\n"+tile);
-        int row = tile.charAt(5)-48,column = tile.charAt(6)-48;
+        int row = Integer.parseInt(tile.substring(tile.indexOf('_')+1,tile.lastIndexOf('_')));
+        int column = Integer.parseInt(tile.substring(tile.lastIndexOf('_')+1));
 
+        System.out.println(row+"**"+column);
         sightColumn.addAll(getSightToTop(row,column));
         sightColumn.addAll(getSightToBottom(row,column));
 
@@ -160,7 +162,7 @@ public class AkariBoard {
         List<String> result = new ArrayList<>();
         result.addAll(sightColumn);
         result.addAll(sightRow);
-        result.add(row+""+column);
+        result.add(row+"_"+column);
         for (String str: result) {
             System.out.println(str);
         }
@@ -170,7 +172,8 @@ public class AkariBoard {
     List<String> getSightColumn(String tile) {
         List<String> sightColumn = new ArrayList<String>();
 
-        int row = tile.charAt(5)-48,column = tile.charAt(6)-48;
+        int row = Integer.parseInt(tile.substring(tile.indexOf('_')+1,tile.lastIndexOf('_')));
+        int column = Integer.parseInt(tile.substring(tile.lastIndexOf('_')+1));
 
         sightColumn.addAll(getSightToTop(row,column));
         sightColumn.addAll(getSightToBottom(row,column));
@@ -178,7 +181,7 @@ public class AkariBoard {
 
 
 
-        sightColumn.add(row+""+column);
+        sightColumn.add(row+"_"+column);
 
         return sightColumn;
     }
@@ -187,13 +190,14 @@ public class AkariBoard {
         List<String> sightRow = new ArrayList<String>();
 
 
-        int row = tile.charAt(5)-48,column = tile.charAt(6)-48;
+        int row = Integer.parseInt(tile.substring(tile.indexOf('_')+1,tile.lastIndexOf('_')));
+        int column = Integer.parseInt(tile.substring(tile.lastIndexOf('_')+1));
 
         sightRow.addAll(getSightToLeft(row,column));
         sightRow.addAll(getSightToRight(row,column));
 
 
-        sightRow.add(row+""+column);
+        sightRow.add(row+"_"+column);
 
         return sightRow;
     }
@@ -203,7 +207,7 @@ public class AkariBoard {
         row--;
         while(row != -1 && !isBlackCell(row,column))
         {
-            result.add(row+""+column);
+            result.add(row+"_"+column);
             row--;
         }
         return result;
@@ -213,7 +217,7 @@ public class AkariBoard {
         row++;
         while(row !=this.row && !isBlackCell(row,column))
         {
-            result.add(row+""+column);
+            result.add(row+"_"+column);
             row++;
         }
         return result;
@@ -224,7 +228,7 @@ public class AkariBoard {
         column--;
         while(column !=-1 && !isBlackCell(row,column))
         {
-            result.add(row+""+column);
+            result.add(row+"_"+column);
             column--;
         }
         return result;
@@ -234,7 +238,7 @@ public class AkariBoard {
         column++;
         while(column !=this.column && !isBlackCell(row,column))
         {
-            result.add(row+""+column);
+            result.add(row+"_"+column);
             column++;
         }
         return result;
