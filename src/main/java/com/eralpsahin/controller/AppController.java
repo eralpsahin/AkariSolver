@@ -52,7 +52,6 @@ public class AppController {
         double width = akariPane.prefWidthProperty().get() / col;
         double height = akariPane.prefHeightProperty().get() / row;
         char[][] board = akari.getBoard();
-        akari.printMatrix();
         tile = new StackPane[row][col];
         for (int i = col - 1; i >= 0; i--)
             for (int j = row - 1; j >= 0; j--) {

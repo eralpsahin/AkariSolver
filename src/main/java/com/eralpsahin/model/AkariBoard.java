@@ -139,11 +139,9 @@ public class AkariBoard {
         List<String> sightColumn = new ArrayList<>();
         List<String> sightRow = new ArrayList<>();
 
-        System.out.println("\n" + tile);
         int row = Integer.parseInt(tile.substring(tile.indexOf('_') + 1, tile.lastIndexOf('_')));
         int column = Integer.parseInt(tile.substring(tile.lastIndexOf('_') + 1));
 
-        System.out.println(row + "**" + column);
         sightColumn.addAll(getSightToTop(row, column));
         sightColumn.addAll(getSightToBottom(row, column));
 
@@ -154,9 +152,7 @@ public class AkariBoard {
         result.addAll(sightColumn);
         result.addAll(sightRow);
         result.add(row + "_" + column);
-        for (String str : result) {
-            System.out.println(str);
-        }
+
 
         return result;
     }
@@ -261,7 +257,6 @@ public class AkariBoard {
         }
 
         for (BlackCell cell : getBlackCellList()) {
-            System.out.println("\n" + cell);
 
             if (cell.getValue() == 11)
                 continue;
@@ -273,7 +268,6 @@ public class AkariBoard {
 
                 for (int i = 0; i < vars.length; i++) {
                     if (vars[i].getName().equals("Tile_" + str)) {
-                        System.out.println(i + ": " + vars[i].getName());
                         newArray[n] = vars[i];
                         n++;
                     }
@@ -316,7 +310,6 @@ public class AkariBoard {
                 if (var.getName().equals("Tile_" + str)) {
 
                     newArray[n] = var;
-                    System.out.println("NewArray Eleman" + n + ": " + var.getName());
                     n++;
                     break;
                 }
