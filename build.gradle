@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.7'
+}
+
+group 'com.eralpsahin'
+version '1.0'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'com.jfoenix:jfoenix:9.0.8' // Java 9
+    // https://mvnrepository.com/artifact/org.choco-solver/choco-solver
+    compile group: 'org.choco-solver', name: 'choco-solver', version: '4.0.0.a'
+
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    version = '11.0.2'
+}
+
+mainClassName = 'com.eralpsahin.Main'
