@@ -19,18 +19,19 @@ import javafx.stage.FileChooser;
 import java.io.File;
 
 /**
- * Created by eralpsahin on 5.04.2017.
+ * Modified by eralpsahin on 03.03.2019.
  */
 public class AppController {
 
     @FXML
-    private Pane akariPane;
-    private StackPane[][] tile;
-    private AkariBoard akari;
-    @FXML
     TextArea detailText;
     @FXML
     Button solveButton;
+    @FXML
+    private Pane akariPane;
+    private StackPane[][] tile;
+    private AkariBoard akari;
+
     public void initialize() {
 
 
@@ -50,10 +51,10 @@ public class AppController {
         int col = akari.getColumn();
         double width = akariPane.prefWidthProperty().get() / col;
         double height = akariPane.prefHeightProperty().get() / row;
-        char board[][] = akari.getBoard();
+        char[][] board = akari.getBoard();
         akari.printMatrix();
         tile = new StackPane[row][col];
-        for (int i = col - 1; i >= 0; i--) {
+        for (int i = col - 1; i >= 0; i--)
             for (int j = row - 1; j >= 0; j--) {
                 tile[j][i] = new StackPane();
                 tile[j][i].setPrefSize(height, width);
@@ -94,7 +95,6 @@ public class AppController {
 
                 akariPane.getChildren().add(tile[j][i]);
             }
-        }
     }
 
     @FXML
@@ -114,24 +114,21 @@ public class AppController {
                     protected Void call() {
                         String details = akari.solvePuzzle();
                         Platform.runLater(() -> {
-                            try {
-                                detailText.setVisible(true);
-                                detailText.setText(details);
-                                double height = akariPane.prefHeightProperty().get() / akari.getRow();
-                                double width = akariPane.prefWidthProperty().get() / akari.getColumn();
+                            detailText.setVisible(true);
+                            detailText.setText(details);
+                            double height = akariPane.prefHeightProperty().get() / akari.getRow();
+                            double width = akariPane.prefWidthProperty().get() / akari.getColumn();
 
-                                for (int i = 0; i < akari.getVarCount(); i++) {
-                                    int row = Integer.parseInt(akari.getVars()[i].getName().substring(akari.getVars()[i].getName().indexOf('_')+1,akari.getVars()[i].getName().lastIndexOf('_')));
-                                    int column = Integer.parseInt(akari.getVars()[i].getName().substring(akari.getVars()[i].getName().lastIndexOf('_')+1));
+                            for (int i = 0; i < akari.getVarCount(); i++) {
+                                int row = Integer.parseInt(akari.getVars()[i].getName().substring(akari.getVars()[i].getName().indexOf('_') + 1, akari.getVars()[i].getName().lastIndexOf('_')));
+                                int column = Integer.parseInt(akari.getVars()[i].getName().substring(akari.getVars()[i].getName().lastIndexOf('_') + 1));
 
-                                    if (akari.getVars()[i].getValue() == 1) {
-                                        Image image = new Image("/lightbulb.png", height, width, false, false);
-                                        ImageView imgView = new ImageView(image);
-                                        tile[row][column].getChildren().add(imgView);
-                                    }
-
+                                if (akari.getVars()[i].getValue() == 1) {
+                                    Image image = new Image("/lightbulb.png", height, width, false, false);
+                                    ImageView imgView = new ImageView(image);
+                                    tile[row][column].getChildren().add(imgView);
                                 }
-                            } finally {
+
                             }
                         });
                         return null;
@@ -144,7 +141,7 @@ public class AppController {
 
     private Text createText(String n) {
         Text t = new Text(n);
-        t.setStyle("-fx-font-size: 15px");
+        t.setStyle("}javafx_dummy_selector {-fx-font-size: 15px");
         t.setFill(Color.WHITE);
         return t;
     }

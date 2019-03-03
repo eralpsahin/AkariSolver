@@ -2,10 +2,12 @@ package com.eralpsahin.helper;
 
 import com.eralpsahin.model.AkariBoard;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
- * Created by eralpsahin on 5.04.2017.
+ * Modified by eralpsahin on 03.03.2019.
  */
 public class FileHelper {
 
@@ -24,7 +26,7 @@ public class FileHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new AkariBoard(filePath, row, (col + 1) /2);
+        return new AkariBoard(filePath, row, (col + 1) / 2);
     }
 
 }

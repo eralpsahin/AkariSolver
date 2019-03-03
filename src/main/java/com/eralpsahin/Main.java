@@ -7,10 +7,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author tking
+ * Modified by eralpsahin on 03.03.2019.
  */
 public class Main extends Application {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryState) throws Exception {
@@ -18,13 +24,6 @@ public class Main extends Application {
 
         primaryState.setScene(new Scene(root));
         primaryState.show();
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 }
 

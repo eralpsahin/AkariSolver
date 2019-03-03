@@ -1,38 +1,31 @@
 package com.eralpsahin.model;
 
 /**
- * Created by eralpsahin on 31.03.2017.
+ * Modified by eralpsahin on 03.03.2019.
  */
 public class BlackCell {
-    int value;
+    private int value;
     int row;
     int column;
     int neighbor;
-    public BlackCell(int value, int row, int column) {
+
+    BlackCell(int value, int row, int column) {
         this.value = value;
         this.row = row;
         this.column = column;
         neighbor = 0;
     }
 
-    public int getNeighbor() {
+    int getNeighbor() {
         return neighbor;
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getColumn() {
-        return column;
     }
 
     @Override
     public String toString() {
-        return "BlackCell["+row+"]["+column+"]: " + value;
+        return "BlackCell[" + row + "][" + column + "]: " + value;
     }
 }
