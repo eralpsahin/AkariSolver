@@ -19,11 +19,12 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryState) throws Exception {
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("app.fxml"));
 
-        primaryState.setScene(new Scene(root));
-        primaryState.show();
+        primaryStage.setTitle("Akari Solver");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 }
 
