@@ -17,10 +17,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.nio.file.FileSystems;
 
-/**
- * Modified by eralpsahin on 03.03.2019.
- */
 public class AppController {
 
     @FXML
@@ -34,13 +32,17 @@ public class AppController {
 
     public void initialize() {
 
-
     }
 
     @FXML
     protected void handleNewPuzzleMenuItem() {
         akariPane.getChildren().clear();
         final FileChooser fileChooser = new FileChooser();
+
+        // Open project root as default directory
+        File root = new File(FileSystems.getDefault().getPath("").toAbsolutePath().toString());
+        fileChooser.setInitialDirectory(root);
+
         File file = fileChooser.showOpenDialog(akariPane.getScene().getWindow());
         if (file == null)
             return;
@@ -57,10 +59,8 @@ public class AppController {
             for (int j = row - 1; j >= 0; j--) {
                 tile[j][i] = new StackPane();
                 tile[j][i].setPrefSize(height, width);
-                tile[j][i].relocate(i * width, j * width);
-
+                tile[j][i].relocate(i * height, j * width);
                 tile[j][i].setStyle("-fx-border-color: black; -fx-border-width: 0.1");
-
 
                 switch (board[j][i]) {
                     case 'B':
@@ -103,7 +103,6 @@ public class AppController {
 
     @FXML
     protected void handleSolveButton() {
-
         //Solve in background thread
         Service<Void> service = new Service<>() {
             @Override
