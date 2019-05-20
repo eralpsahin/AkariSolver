@@ -26,10 +26,10 @@
                 <Label alignment="CENTER" style="&#10;" text="Akari Puzzle" textAlignment="CENTER"
                        BorderPane.alignment="TOP_LEFT">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" fx:id="x1"/>
                     </font>
                     <textFill>
-                        <Color blue="0.624" green="0.624" red="0.624" />
+                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x2"/>
                     </textFill>
                     <BorderPane.margin>
                         <Insets left="20.0" top="20.0"/>
