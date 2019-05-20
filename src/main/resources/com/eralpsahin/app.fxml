@@ -8,71 +8,60 @@
 <?import javafx.scene.text.Font?>
 <VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.eralpsahin.controller.AppController">
-    <children>
-        <MenuBar VBox.vgrow="NEVER">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem fx:id="newPuzzle" mnemonicParsing="false" onAction="#handleNewPuzzleMenuItem"
-                                  text="New"/>
-                        <SeparatorMenuItem mnemonicParsing="false"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleQuitMenuItem" text="Quit"/>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About AkariSolver"/>
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <SplitPane dividerPositions="0.62" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0"
-                   VBox.vgrow="ALWAYS">
-            <items>
-                <BorderPane prefHeight="200.0" prefWidth="200.0">
-                    <top>
-                        <Label alignment="CENTER" style="&#10;" text="Akari" textAlignment="CENTER" wrapText="false"
-                               BorderPane.alignment="TOP_LEFT">
-                            <font>
-                                <Font size="18.0" fx:id="x1"/>
-                            </font>
-                            <textFill>
-                                <Color blue="0.624" green="0.624" red="0.624" fx:id="x2"/>
-                            </textFill>
-                            <BorderPane.margin>
-                                <Insets left="20.0" top="20.0"/>
-                            </BorderPane.margin>
-                        </Label>
-                    </top>
-                    <center>
-                        <VBox alignment="CENTER">
-                            <HBox alignment="CENTER" fx:id="akariPane" BorderPane.alignment="CENTER">
-                                <!-- your node/pane -->
-                            </HBox>
-                        </VBox>
-                    </center>
-                    <bottom>
-                        <JFXButton fx:id="solveButton" buttonType="RAISED" onAction="#handleSolveButton"
-                                   style="-fx-background-color: BLUE; -jfx-button-type: RAISED;" text="Solve"
-                                   textFill="WHITE" visible="false" BorderPane.alignment="CENTER">
-                            <font>
-                                <Font size="18.0"/>
-                            </font>
-                            <BorderPane.margin>
-                                <Insets bottom="20.0"/>
-                            </BorderPane.margin>
-                        </JFXButton>
-                    </bottom>
-                </BorderPane>
-                <AnchorPane prefWidth="655.0">
-                    <children>
-                        <Label alignment="CENTER" font="$x1" layoutX="20.0" layoutY="20.0" style="&#10;" text="Details"
-                               textAlignment="CENTER" textFill="$x2" wrapText="false"/>
-                        <TextArea fx:id="detailText" editable="false" layoutX="25.0" layoutY="62.0" prefHeight="450.0"
-                                  prefWidth="250.0" visible="false"/>
-                    </children>
-                </AnchorPane>
-            </items>
-        </SplitPane>
-    </children>
+    <MenuBar VBox.vgrow="NEVER">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" onAction="#handleNewPuzzleMenuItem"
+                      text="New"/>
+            <SeparatorMenuItem mnemonicParsing="false"/>
+            <MenuItem mnemonicParsing="false" onAction="#handleQuitMenuItem" text="Quit"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" text="About AkariSolver"/>
+        </Menu>
+    </MenuBar>
+    <SplitPane dividerPositions="0.62" focusTraversable="true"
+               VBox.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <top>
+                <Label alignment="CENTER" style="&#10;" text="Akari Puzzle" textAlignment="CENTER"
+                       BorderPane.alignment="TOP_LEFT">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <textFill>
+                        <Color blue="0.624" green="0.624" red="0.624" />
+                    </textFill>
+                    <BorderPane.margin>
+                        <Insets left="20.0" top="20.0"/>
+                    </BorderPane.margin>
+                </Label>
+            </top>
+            <center>
+                <VBox alignment="CENTER">
+                    <HBox alignment="CENTER" fx:id="akariPane" BorderPane.alignment="CENTER">
+                        <!-- your node/pane -->
+                    </HBox>
+                </VBox>
+            </center>
+            <bottom>
+                <JFXButton fx:id="solveButton" buttonType="RAISED" onAction="#handleSolveButton"
+                           style="-fx-background-color: BLUE; -jfx-button-type: RAISED;" text="Solve"
+                           textFill="WHITE" visible="false" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <BorderPane.margin>
+                        <Insets bottom="20.0"/>
+                    </BorderPane.margin>
+                </JFXButton>
+            </bottom>
+        </BorderPane>
+        <AnchorPane prefWidth="655.0">
+            <Label alignment="CENTER" font="$x1" layoutX="20.0" layoutY="20.0" style="&#10;"
+                   text="Solver Details"
+                   textAlignment="CENTER" textFill="$x2"/>
+            <TextArea fx:id="detailText" editable="false" layoutX="25.0" layoutY="62.0" prefHeight="450.0"
+                      prefWidth="250.0" visible="false"/>
+        </AnchorPane>
+    </SplitPane>
 </VBox>
